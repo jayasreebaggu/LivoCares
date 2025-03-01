@@ -54,7 +54,7 @@ const Login = ({ navigation }) => {
 
             {/* login text */}
             <Text style={styles.logintext}>Welcome to</Text>
-            <Text style={styles.doctortext}>Doctor4you</Text>
+            <Text style={styles.doctortext}>LivoCares</Text>
 
             <View style={styles.container}>
               <Formik
