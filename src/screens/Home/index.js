@@ -3,7 +3,7 @@ import {
     ScrollView, SafeAreaView, View, Text, TouchableOpacity
 } from 'react-native';
 import styles from './style';
-import LinearGradient from 'react-native-linear-gradient';
+//import LinearGradient from 'react-native-linear-gradient';
 import DefaultImage from '../../assets/Images/SVG/DefaultImage';
 import FontFamily from '../../common/FontFamily';
 import Colors from '../../common/Colors';
@@ -85,7 +85,7 @@ const Home = ({ navigation }) => {
             <ScrollView style={styles.bodyContainer}>
 
                 <View>
-                    <LinearGradient colors={["#EBF7F7", "#C6E4E4"]} style={styles.linearview}>
+                    {/* <LinearGradient colors={["#EBF7F7", "#C6E4E4"]} style={styles.linearview}> */}
                         <View style={styles.topview}>
                             <DefaultImage />
                             <View style={styles.subview}>
@@ -96,7 +96,7 @@ const Home = ({ navigation }) => {
                                 <Notification />
                             </TouchableOpacity>
                         </View>
-                    </LinearGradient>
+                    {/* </LinearGradient> */}
 
                     {/* search field */}
                     <SearchInputDy
@@ -106,7 +106,7 @@ const Home = ({ navigation }) => {
                         placeholdertext={'Search doctor, catagories, topic . . .'}
                         style={styles.searchview}
                     />
-                    <SpecialistList key={'SpeedMeter'} data={Specialist} title={'Specialist'} />
+                    <SpecialistList  data={Specialist} title={'Specialist'} />
                     <Text style={styles.title}>{"Get Care"}</Text>
                     <ButtonDy
                         onPress={() => navigation.navigate("Patientdetails")}
@@ -114,8 +114,8 @@ const Home = ({ navigation }) => {
                         style={styles.button}
                         textStyle={styles.buttontext}
                     />
-                    <CardioIssuelist key={'SpeedMeter'} data={CardioIssues} />
-                    <TopDoctorList key={'SpeedMeter'} data={TopDoctorlist} title={'Top doctors'} morePress={() => navigation.navigate("TopDoctors")} />
+                    <CardioIssuelist data={CardioIssues} />
+                    <TopDoctorList  data={TopDoctorlist} title={'Top doctors'} morePress={() => navigation.navigate("TopDoctors")} />
                 </View>
 
             </ScrollView>
