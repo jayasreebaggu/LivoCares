@@ -1,7 +1,7 @@
 
 const env = {
     development: {
-        API_URL: 'http://192.168.1.185:8089',
+        API_URL: 'http://192.168.1.12:8000',
         NODE_ENV: 'development',
     },
     test: {

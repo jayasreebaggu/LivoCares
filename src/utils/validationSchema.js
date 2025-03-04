@@ -1,14 +1,12 @@
 import * as Yup from 'yup';
 
 const phoneRegExp =
-    /^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
+    /^[6789]\d{9}$/;
 
-export const LoginSchema = Yup.object().shape({
-    email: Yup.string().email().required('Required email!').label('Email'),
-    password: Yup.string()
-        .required('Required password')
-        .min(4, 'Short!')
-        .label('Password'),
+export const SendOtpSchema = Yup.object().shape({
+    phoneNumber: Yup.string()
+        .required('Required phone number!')
+        .matches(phoneRegExp, 'Phone number is not valid'),
 });
 
 export const SignupSchema = Yup.object().shape({

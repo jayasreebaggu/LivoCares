@@ -4,11 +4,12 @@ import { ConstantsService } from '../utils/ConstantsService';
 import ErrorHandlerService from './ErrorHandlerService';
 
 
-
 // API calls
 export const sendOtp = async (phoneNumber) => {
     try {
-        const response = await api.post('/users/sendotp', { phoneNumber });
+        const response = await api.post('/auth/send-otp', { phoneNumber },
+        );
+        console.log(response.data);
         return response.data;
     } catch (error) {
         handleError(error);
@@ -17,16 +18,18 @@ export const sendOtp = async (phoneNumber) => {
 
 export const login = async (phoneNumber, otp) => {
     try {
-        const response = await api.post('/users/login', { phoneNumber, otp });
+        const response = await api.post('/auth/verify-otp', { phoneNumber, otp });
+        console.log(response.data);
         return response.data;
     } catch (error) {
+        console.log(error);
         handleError(error);
     }
 };
 
 export const signup = async (data) => {
     try {
-        const response = await api.post('/users/signup', data);
+        const response = await api.post('/auth/register', data);
         return response.data;
     } catch (error) {
         handleError(error);
@@ -35,18 +38,16 @@ export const signup = async (data) => {
 
 // Error handling function
 const handleError = (error) => {
-    const { status, data } = error.response || {};
+    const { data } = error?.response || {};
     const failureCode = data?.failure_code;
-
     if (failureCode) {
         switch (failureCode) {
-            
             case ErrorCodes.INVALID_PHONENUMBER:
                 ErrorHandlerService.showError(ConstantsService.invalidPhoneNumber);
                 break;
-            case ErrorCodes.PARTNER_ACCOUNT_DOESNOT_EXIST:
+            case ErrorCodes.USER_ACCOUNT_DOESNOT_EXIST:
                 navigateToSignUpScreen();
-                break;           
+                break;
             case ErrorCodes.NOT_ACCEPTED_PRIVACY_POLICY:
                 ErrorHandlerService.showError(ConstantsService.acceptPrivacyPolicy);
                 break;
@@ -65,6 +66,5 @@ const handleError = (error) => {
 
 
 const navigateToSignUpScreen = () => {
-      navigation.navigate("Signup");
-    
-  };
+    navigation.navigate("Signup");
+};

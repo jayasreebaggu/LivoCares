@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axios from 'react-native-axios';
 import env from '../utils/env';
 import storageService from './storageService';
-import handleError from './ErrorHandlerService';
+import ErrorHandlerService from './ErrorHandlerService';
 
 const api = axios.create({
     baseURL: env.API_URL,
@@ -22,10 +22,10 @@ api.interceptors.request.use(
 );
 
 // Response Interceptor
-api.interceptors.response.use(
+api.interceptors?.response.use(
     (response) => response,
     (error) => {
-        const errorMessage = handleError(error);
+        const errorMessage = ErrorHandlerService.showError(error);
         return Promise.reject(errorMessage);
     }
 );

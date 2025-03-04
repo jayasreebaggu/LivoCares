@@ -1,6 +1,5 @@
-export const loginValues = {
-    email: '',
-    password: '',
+export const SendOtpValues = {
+    phoneNumber: '',
 };
 
 export const signupValues = {
