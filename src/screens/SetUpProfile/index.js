@@ -8,7 +8,7 @@ import TextField from '../../common/Components/TextField';
 import ErrorTextDY from '../../common/Components/ErrorTextDY';
 import ButtonDy from '../../common/Components/ButtonDy';
 import HeaderDy from '../../common/Components/HeaderDy';
-import { signup} from '../../services/apiService';
+import { signup} from '../../services/userService';
 
 const SetUpProfile = ({ navigation }) => {
     const [testValue, setTestValue] = useState("");

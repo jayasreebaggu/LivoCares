@@ -9,7 +9,7 @@ import {
 import styles from './style';
 import HeaderDy from '../../common/Components/HeaderDy';
 import ButtonDy from '../../common/Components/ButtonDy';
-import { login, sendOtp } from '../../services/apiService';
+import { login, sendOtp } from '../../services/userService';
 
 const OTPScreen = ({ navigation, route }) => {
   const { phoneNumber } = route.params; 
@@ -41,30 +41,17 @@ const OTPScreen = ({ navigation, route }) => {
     }
 
     try {
-      const response = await login(phoneNumber, value);
+      const response = await login(phoneNumber, value); // Use login from UserService
       console.log("LOGIN Response:", response);
 
-      if (response) {
-       // Alert.alert("Success")
-        // Navigate to HomeTab on successful login
-        navigation.reset({
-          index: 0,
-          routes: [{ name: 'HomeTab' }],
-        });
-      } else {
-        // Handle specific failure codes
-        const { failure_code, error_message } = response;
-        if (failure_code === "PARTNER_ACCOUNT_DOESNOT_EXIST") {
-          // Navigate to Signup screen if the account does not exist
-          navigation.navigate("Signup");
-        } else {
-          // Show an alert for other errors
-          Alert.alert("Error", error_message || "Invalid OTP. Please try again.");
-        }
-      }
+      // Navigate to HomeTab on successful login
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'HomeTab' }],
+      });
     } catch (error) {
       console.error("Verify OTP error:", error);
-      Alert.alert("Error", "Failed to verify OTP. Please try again.");
+      Alert.alert("Error", error.message || "Failed to verify OTP. Please try again.");
     }
   };
 

@@ -21,21 +21,12 @@ import {
   import { loginValues } from '../../utils/formixInitials';
   import { LoginSchema } from '../../utils/validationSchema';
   import ErrorTextDY from '../../common/Components/ErrorTextDY';
-  import { sendOtp } from '../../services/apiService';
+  import { sendOtp } from '../../services/userService';
 
   
   const Login = ({ navigation }) => {
     const [error, setError] = useState('');
     const windowHeight = Dimensions.get('window').height;
-    // const handleLogin = async (values) => {
-    //     try {
-    //         const { phoneNumber } = values;
-    //         await sendOtp(phoneNumber);
-    //         navigation.navigate('OTPScreen', { phoneNumber });
-    //     } catch (err) {
-    //         setError(err.error_message || 'Error sending OTP');
-    //     }
-    // };
 
     const onSendOTP = async (values) => {
         try {
