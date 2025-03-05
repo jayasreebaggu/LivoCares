@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
-import Colors from '../../common/Colors';
-import FontFamily from '../../common/FontFamily';
+import Colors from '../../../common/Colors';
+import FontFamily from '../../../common/FontFamily';
 
 const styles = StyleSheet.create({
     safeContainer: {

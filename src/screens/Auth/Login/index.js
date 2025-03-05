@@ -6,18 +6,18 @@ import {
     ScrollView,
     Dimensions,
 } from 'react-native';
-import React, { useRef, useState } from 'react';
-import styles from './style';
-import Loginlogo from '../../assets/Images/SVG/Loginlogo';
-import Background from '../../assets/Images/Temp/background_image.png';
-import PHONE_ICON from '../../assets/Images/Temp/phone.png';
-import ButtonDy from '../../common/Components/ButtonDy';
-import TextField from '../../common/Components/TextField';
 import { ErrorMessage, Formik } from 'formik';
-import { SendOtpValues } from '../../utils/formixInitials';
-import { SendOtpSchema } from '../../utils/validationSchema';
-import ErrorTextDY from '../../common/Components/ErrorTextDY';
-import { sendOtp } from '../../services/userService';
+import React from 'react';
+import styles from './style';
+import Loginlogo from '../../../assets/Images/SVG/Loginlogo';
+import Background from '../../../assets/Images/Temp/background_image.png';
+import PHONE_ICON from '../../../assets/Images/Temp/phone.png';
+import ButtonDy from '../../../common/Components/ButtonDy';
+import TextField from '../../../common/Components/TextField';
+import { SendOtpValues } from '../../../utils/formixInitials';
+import { SendOtpSchema } from '../../../utils/validationSchema';
+import ErrorTextDY from '../../../common/Components/ErrorTextDY';
+import { sendOtp } from '../../../services/userService';
 
 
 const Login = ({ navigation }) => {
@@ -26,12 +26,13 @@ const Login = ({ navigation }) => {
     const onSendOTP = async (values) => {
         try {
             console.log('Sending OTP for:', values.phoneNumber); // Add this line
-            await sendOtp(values.phoneNumber);
+            const response = await sendOtp(values.phoneNumber);
             console.log('OTP sent successfully'); // Add this line
-            navigation.navigate('OTPScreen', { phoneNumber: values.phoneNumber });
+            if (response.success) {
+                navigation.navigate('OTPScreen', { phoneNumber: values.phoneNumber });
+            }
         } catch (error) {
-            console.error('Send OTP error:', error);
-
+            console.log('Send OTP error:', error);
         }
     };
 

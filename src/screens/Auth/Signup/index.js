@@ -8,18 +8,17 @@ import {
 } from 'react-native';
 import React, { useRef, useState } from 'react';
 import styles from './style';
-import Loginlogo from '../../assets/Images/SVG/Loginlogo';
-import Background from '../../assets/Images/Temp/background_image.png';
-import { KeyboardAwareView } from 'react-native-keyboard-aware-view';
-import EMAIL_ICON from '../../assets/Images/Temp/email.png';
-import PHONE_ICON from '../../assets/Images/Temp/phone.png';
-import USERNAME_ICON from '../../assets/Images/Temp/username.png';
-import ButtonDy from '../../common/Components/ButtonDy';
-import TextField from '../../common/Components/TextField';
+import Loginlogo from '../../../assets/Images/SVG/Loginlogo';
+import Background from '../../../assets/Images/Temp/background_image.png';
+import EMAIL_ICON from '../../../assets/Images/Temp/email.png';
+import PHONE_ICON from '../../../assets/Images/Temp/phone.png';
+import USERNAME_ICON from '../../../assets/Images/Temp/username.png';
+import ButtonDy from '../../../common/Components/ButtonDy';
+import TextField from '../../../common/Components/TextField';
 import { ErrorMessage, Formik } from 'formik';
-import { signupValues } from '../../utils/formixInitials';
-import { SignupSchema } from '../../utils/validationSchema';
-import ErrorTextDY from '../../common/Components/ErrorTextDY';
+import { signupValues } from '../../../utils/formixInitials';
+import { SignupSchema } from '../../../utils/validationSchema';
+import ErrorTextDY from '../../../common/Components/ErrorTextDY';
 
 const Signup = ({ navigation }) => {
     const windowHeight = Dimensions.get('window').height;

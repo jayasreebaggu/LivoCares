@@ -25,8 +25,15 @@ api.interceptors.request.use(
 api.interceptors?.response.use(
     (response) => response,
     (error) => {
-        const errorMessage = ErrorHandlerService.showError(error);
-        return Promise.reject(errorMessage);
+        if (error.response) {
+            return Promise.reject({ status: error.response.status, data: error.response.data });
+        } else if (error.request) {
+            const errorMessage = ErrorHandlerService.showError("No response received from server");
+            return Promise.reject(errorMessage);
+        } else {
+            const errorMessage = ErrorHandlerService.showError(error.message);
+            return Promise.reject(errorMessage);
+        }
     }
 );
 
