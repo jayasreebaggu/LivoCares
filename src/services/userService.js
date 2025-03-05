@@ -66,7 +66,11 @@ const handleError = (error, navigation) => {
 
 
 const navigateToSignUpScreen = (navigation, phoneNumber) => {
-    navigation.navigate("Signup",
-        { phoneNumber },
-    );
+    navigation.reset({
+        index: 0,
+        routes: [{ name: 'HomeTab' }],
+      });
+    // navigation.navigate("Signup",
+    //     { phoneNumber },
+    // );
 };

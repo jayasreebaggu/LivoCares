@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { ScrollView, SafeAreaView, FlatList, View, Text, TouchableOpacity } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+
 import styles from './style';
 import { ProfileItems } from './Components/ProfileListItem';
 import Colors from '../../common/Colors';
-import LinearGradient from 'react-native-linear-gradient';
 import Johndoe from '../../assets/Images/SVG/Johndoe';
 import EditIcon from '../../assets/Images/SVG/EditIcon';
 import ProfileInputBox from '../../common/Components/ProfileInputBox';
@@ -58,6 +59,7 @@ const Settings = ({ navigation }) => {
                         return (
                             <View>
                                 <ProfileInputBox
+                                    key={index}
                                     onPress={() => __onItemPress(index)}
                                     left={item.icon}
                                     title={item.name}
@@ -84,7 +86,7 @@ const Settings = ({ navigation }) => {
                     islogout
                 // processing={signinProcess}
                 />
-                 
+
 
             </ScrollView>
         </SafeAreaView>
