@@ -1,7 +1,7 @@
 
 const env = {
     development: {
-        API_URL: 'http://192.168.1.12:8000',
+        API_URL: 'https://5e54-110-235-225-101.ngrok-free.app',
         NODE_ENV: 'development',
     },
     test: {
