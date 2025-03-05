@@ -6,6 +6,7 @@ import {
 import Eyeoff from '../../assets/Images/SVG/Eyeoff';
 import Eyeopen from '../../assets/Images/SVG/Eyeopen';
 // import DateTimePickerModal from "react-native-modal-datetime-picker";
+import DateTimePicker from '@react-native-community/datetimepicker';
 import Moment from 'moment';
 import CountryPicker, { DARK_THEME, FlagButton } from 'react-native-country-picker-modal'
 import Colors from "../../common/Colors";
@@ -39,6 +40,8 @@ const TextField = ({
     const [isDropOpen, setisDropOpen] = useState(false);
     const [filterValue, setfilterValue] = useState(undefined);
     const [calanderModalOpen, setcalanderModalOpen] = useState(false);
+    const [date, setDate] = useState(new Date());
+
     const __onSelectItem = (index) => {
         setfilterValue(index);
         setisDropOpen(false);
@@ -82,30 +85,18 @@ const TextField = ({
         );
     }
 
-    // date picker right side
     const __dateInputPicker = () => {
         return (
             <TouchableOpacity
                 style={styles.titleInputContainer}
                 onPress={() => setcalanderModalOpen(true)}
             >
-                {/* date value */}
-                <Text style={[styles.titleInput, styles.title, {
-                    flex: 1
-                }]}>12 September, 1999</Text>
-                {/* {Moment(value).format("DD MMM YY")} */}
-
-                {/* calender date picker */}
-                {/* <DateTimePickerModal
-                    isVisible={calanderModalOpen}
-                    mode="date"
-                    onConfirm={changeValue}
-                    onCancel={() => setcalanderModalOpen(false)}
-                /> */}
+                <Text style={[styles.titleInput, styles.title, { flex: 1 }]}>
+                    {date ? Moment(date).format("DD MMMM, YYYY") : "Select Date"}
+                </Text>
             </TouchableOpacity>
-        )
-    }
-
+        );
+    };
 
     return (
         <View
@@ -168,6 +159,22 @@ const TextField = ({
                     </TouchableOpacity>
                 )}
             </View>
+
+            {calanderModalOpen && (
+                <DateTimePicker 
+                    value={date}
+                    mode="date"
+                    display="default"
+                    onChange={(event, selectedDate) => {
+                        setcalanderModalOpen(false);
+                        if (selectedDate) {
+                            setDate(selectedDate);
+                            changeValue(Moment(selectedDate).format("YYYY-MM-DD")); // Pass valid date format
+                        }
+                    }}
+                />
+            )}
+               
 
             {/* drop down modal for selection */}
             <GenderDropmodel
