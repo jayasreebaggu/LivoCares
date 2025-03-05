@@ -63,7 +63,7 @@
     "react-native-wheel-scrollview-picker": "^2.0.9",
     "react-native-wheely-simple-picker": "^1.0.1",
     "yup": "^1.6.1",
-    "expo-linear-gradient": "~14.0.2",
+    "expo-linear-gradient": "~14.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
