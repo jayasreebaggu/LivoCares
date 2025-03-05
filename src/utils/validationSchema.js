@@ -10,18 +10,24 @@ export const SendOtpSchema = Yup.object().shape({
 });
 
 export const SignupSchema = Yup.object().shape({
-    email: Yup.string().email().required('Required email!').label('Email'),
-    name: Yup.string()
-        .required('Required name')
-        .min(2, 'Short!')
-        .label('name'),
-    phone: Yup.string()
-        .required('Required phone!')
+    phoneNumber: Yup.string()
+        .required('Required phone number!')
         .matches(phoneRegExp, 'Phone number is not valid'),
-    password: Yup.string()
-        .required('Required password!')
-        .min(4, 'Short!')
-        .label('Password'),
+    email: Yup.string().email().required('Required email!').label('Email'),
+    firstName: Yup.string()
+        .required('Required first name')
+        .min(2, 'Short!'),
+    lastName: Yup.string()
+        .required('Required last name'),
+    height: Yup.number()
+        .required('Required height'),
+    weight: Yup.number()
+        .required('Required weight'),
+    currentLocation: Yup.string(),
+    dob: Yup.string()
+        .required('Required dob'),
+    gender: Yup.string()
+        .required('Required gender'),
 });
 
 

@@ -39,12 +39,13 @@ const handleError = (error, navigation) => {
     const { data } = error || {};
     const failureCode = data?.detail?.error_code;
     const message = data?.detail?.message;
+    console.log('data?', data);
     if (failureCode) {
         switch (failureCode) {
             case ErrorCodes.INVALID_PHONE_NUMBER:
                 throw ErrorHandlerService.showError(message);
             case ErrorCodes.USER_NOT_FOUND:
-                return navigateToSignUpScreen(navigation);
+                return navigateToSignUpScreen(navigation, data.detail.phoneNumber);
             case ErrorCodes.PHONE_NUMBER_NOT_FOUND:
                 throw ErrorHandlerService.showError(message);
             case ErrorCodes.OTP_EXPIRED:
@@ -64,6 +65,8 @@ const handleError = (error, navigation) => {
 };
 
 
-const navigateToSignUpScreen = (navigation) => {
-    navigation.navigate("Signup");
+const navigateToSignUpScreen = (navigation, phoneNumber) => {
+    navigation.navigate("Signup",
+        { phoneNumber },
+    );
 };

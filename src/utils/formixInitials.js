@@ -3,19 +3,17 @@ export const SendOtpValues = {
 };
 
 export const signupValues = {
+    phoneNumber: '',
     email: '',
-    name: '',
-    phone: '',
-    password: '',
-};
-
-export const forgotPasswordValues = {
-    phone: '',
-};
-
-export const resetPasswordValues = {
-    password: '',
-    conformpassword: ''
+    firstName: '',
+    lastName: '',
+    height: '',
+    weight: '',
+    currentLocation: '',
+    dob: '',
+    gender: '',
+    acceptTac: false,
+    acceptPrivacyPol: false
 };
 
 export const helpValues = {
